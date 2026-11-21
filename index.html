@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Um guia visual e progressivo para aprender React: do primeiro componente aos padrões avançados e performance.">
+  <meta name="theme-color" content="#080d14">
+  <title>React — Do primeiro componente ao domínio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='8' fill='%2361dafb'/%3E%3Cg fill='none' stroke='%2361dafb' stroke-width='5'%3E%3Cellipse cx='50' cy='50' rx='45' ry='17'/%3E%3Cellipse cx='50' cy='50' rx='45' ry='17' transform='rotate(60 50 50)'/%3E%3Cellipse cx='50' cy='50' rx='45' ry='17' transform='rotate(120 50 50)'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <noscript><style>.reveal { opacity: 1; transform: none; }</style></noscript>
+</head>
+<body>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ============ CABEÇALHO ============ -->
+  <header class="site-header" id="topo">
+    <nav class="nav container" aria-label="Navegação principal">
+      <a class="brand" href="#inicio" aria-label="React Guide — início">
+        <span class="brand-atom" aria-hidden="true">
+          <i></i><i></i><i></i><b></b>
+        </span>
+        <span>react<span class="brand-accent">.guide</span></span>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav-menu" id="navMenu">
+        <a href="#trilha">Trilha</a>
+        <a href="#conceito">Conceito</a>
+        <a href="#jsx">JSX</a>
+        <a href="#hooks">Hooks</a>
+        <a href="#avancado">Avançado</a>
+        <a href="#projetos">Projetos</a>
+        <a class="nav-cta" href="#comecar">Começar <span aria-hidden="true">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="inicio">
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <div class="hero-badge"><span class="pulse"></span> Guia completo · 13 capítulos + 5 projetos · 2026</div>
+
+        <div class="hero-content">
+          <div class="hero-copy">
+            <h1>
+              Aprenda React<br>
+              <span class="gradient-text">camada por camada.</span>
+            </h1>
+            <p class="hero-lead">
+              Do primeiro componente à arquitetura avançada. Uma leitura contínua
+              onde cada capítulo constrói sobre o anterior — sem pular o "por quê".
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#trilha">Iniciar a trilha <span aria-hidden="true">→</span></a>
+              <a class="btn btn-ghost" href="#conceito">Ler o conceito</a>
+            </div>
+            <div class="hero-meta">
+              <span><strong>13</strong> capítulos</span>
+              <span><strong>5</strong> projetos</span>
+              <span><strong>3</strong> níveis</span>
+            </div>
+          </div>
+
+          <div class="hero-visual" aria-hidden="true">
+            <div class="orbit-stage">
+              <div class="orbit orbit-1"><span class="electron"></span></div>
+              <div class="orbit orbit-2"><span class="electron"></span></div>
+              <div class="orbit orbit-3"><span class="electron"></span></div>
+              <div class="atom-core"><span></span></div>
+              <div class="floating-chip chip-1">useState()</div>
+              <div class="floating-chip chip-2">&lt;Component /&gt;</div>
+              <div class="floating-chip chip-3">props → UI</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="scroll-hint" href="#trilha" aria-label="Rolar para a trilha">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ============ TRILHA ============ -->
+    <section class="section trilha" id="trilha">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">A jornada</span>
+          <h2>Uma trilha, três níveis</h2>
+          <p>Comece entendendo <em>o que</em> React faz. Depois <em>como</em> ele faz. Por fim, <em>quando</em> usar cada recurso — e por quê.</p>
+        </header>
+
+        <div class="level-grid">
+          <article class="level-card reveal" style="--delay:.05s">
+            <div class="level-top">
+              <span class="level-num">01</span>
+              <span class="level-tag tag-start">Iniciante</span>
+            </div>
+            <div class="level-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 3 7.5l9 4.5 9-4.5L12 3Z"/><path d="m3 12 9 4.5 9-4.5M3 16.5 12 21l9-4.5"/></svg>
+            </div>
+            <h3>Fundamentos</h3>
+            <p>O que é React, por que ele existe, JSX, componentes, props e estado.</p>
+            <span class="level-range">Capítulos 01 — 05</span>
+          </article>
+
+          <article class="level-card reveal" style="--delay:.15s">
+            <div class="level-top">
+              <span class="level-num">02</span>
+              <span class="level-tag tag-mid">Intermediário</span>
+            </div>
+            <div class="level-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v4m0 12v4M2 12h4m12 0h4M4.9 4.9l2.8 2.8m8.6 8.6 2.8 2.8m0-14.2-2.8 2.8m-8.6 8.6-2.8 2.8"/><circle cx="12" cy="12" r="3.5"/></svg>
+            </div>
+            <h3>Mecânicas</h3>
+            <p>Renderização, efeitos, hooks, contexto e formulários — o motor por trás da UI.</p>
+            <span class="level-range">Capítulos 06 — 10</span>
+          </article>
+
+          <article class="level-card reveal" style="--delay:.25s">
+            <div class="level-top">
+              <span class="level-num">03</span>
+              <span class="level-tag tag-adv">Avançado</span>
+            </div>
+            <div class="level-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 2 2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2Z"/><path d="m19 18 .7 2.3L22 21l-2.3.7L19 24l-.7-2.3L16 21l2.3-.7L19 18Z"/></svg>
+            </div>
+            <h3>Domínio</h3>
+            <p>Performance, padrões de composição, arquitetura e o ecossistema moderno.</p>
+            <span class="level-range">Capítulos 11 — 13</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTEÚDO ============ -->
+    <div class="learning-layout container">
+      <!-- trilha lateral -->
+      <aside class="chapter-rail" aria-label="Índice de capítulos">
+        <div class="rail-sticky">
+          <span class="rail-title">Neste guia</span>
+          <ol class="rail-list">
+            <li><a href="#conceito"><span>01</span> O que é React</a></li>
+            <li><a href="#porque"><span>02</span> Por que usar</a></li>
+            <li><a href="#jsx"><span>03</span> JSX</a></li>
+            <li><a href="#componentes"><span>04</span> Componentes e props</a></li>
+            <li><a href="#estado"><span>05</span> Estado e eventos</a></li>
+            <li class="rail-divider"><a href="#render"><span>06</span> Renderização</a></li>
+            <li><a href="#efeitos"><span>07</span> Efeitos</a></li>
+            <li><a href="#hooks"><span>08</span> Hooks</a></li>
+            <li><a href="#contexto"><span>09</span> Contexto</a></li>
+            <li><a href="#formularios"><span>10</span> Formulários</a></li>
+            <li class="rail-divider"><a href="#performance"><span>11</span> Performance</a></li>
+            <li><a href="#avancado"><span>12</span> Padrões avançados</a></li>
+            <li><a href="#comecar"><span>13</span> Próximos passos</a></li>
+          </ol>
+          <div class="rail-progress"><span id="railFill"></span></div>
+        </div>
+      </aside>
+
+      <!-- capítulos -->
+      <div class="chapters">
+
+        <!-- 01 -->
+        <section class="chapter reveal" id="conceito">
+          <div class="chapter-head">
+            <div class="chapter-meta"><span class="chapter-num">01</span><span class="chapter-level tag-start">Iniciante</span></div>
+            <h2>O que é React, afinal?</h2>
+            <p class="chapter-lead">Uma biblioteca JavaScript para construir interfaces. Não um framework, não uma "linguagem" — uma forma de pensar a UI.</p>
+          </div>
+
+          <p>React foi criado no Facebook em 2011 e aberto ao público em 2013. Hoje é mantido pela Meta e por uma comunidade enorme. A ideia que o mantém de pé até hoje é quase poética:</p>
+
+          <div class="formula" role="img" aria-label="UI igual a uma função do estado">
+            <span class="formula-label">A ideia central</span>
+            <strong>UI = f<span>(state)</span></strong>
+            <small>A interface é uma função do estado. Mude o estado → a interface se atualiza.</small>
+          </div>
+
+          <p>Em vez de dizer ao navegador <em>"encontre esse elemento, mude o texto dele, adicione uma classe"</em>, você descreve o resultado desejado e o React cuida do caminho. Isso é ser <strong>declarativo</strong>.</p>
+
+          <div class="compare">
+            <div class="compare-box">
+              <span class="compare-label bad">Imperativo</span>
+              <pre><code><span class="tok-com">// "como" fazer</span>
+<span class="tok-kw">const</span> btn = document.querySelector(<span class="tok-str">'.btn'</span>);
+btn.textContent = <span class="tok-str">'Salvo!'</span>;
+btn.classList.add(<span class="tok-str">'success'</span>);</code></pre>
+              <p>Você dirige cada passo e guarda o estado na cabeça.</p>
+            </div>
+            <div class="compare-box">
+              <span class="compare-label good">Declarativo</span>
+              <pre><code><span class="tok-kw">function</span> <span class="tok-fn">Botao</span>({ salvo }) {
+  <span class="tok-kw">return</span> <span class="tok-tag">&lt;button</span> <span class="tok-attr">className</span>=<span class="tok-str">{salvo ? 'success' : ''}</span><span class="tok-tag">&gt;</span>
+    {salvo ? <span class="tok-str">'Salvo!'</span> : <span class="tok-str">'Salvar'</span>}
+  <span class="tok-tag">&lt;/button&gt;</span>;
+}</code></pre>
+              <p>Você descreve o estado atual. O React sincroniza o DOM.</p>
+            </div>
+          </div>
+
+          <div class="callout callout-tip">
+            <span class="callout-icon">✦</span>
+            <div><strong>Aprendeu uma vez, usa em vários lugares.</strong> O mesmo modelo de componentes serve para web (React DOM), mobile (React Native), PDF, VR e até terminais (Ink).</div>
+          </div>
+        </section>
+
+        <!-- 02 -->
+        <section class="chapter reveal" id="porque">
+          <div class="chapter-head">
+            <div class="chapter-meta"><span class="chapter-num">02</span><span class="chapter-level tag-start">Iniciante</span></div>
+            <h2>Por que React?</h2>
+            <p class="chapter-lead">Não é sobre ser "o melhor". É sobre um conjunto de decisões de design que resolvem problemas recorrentes de interface.</p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature">
+              <span class="feature-icon">◧</span>
+              <h3>Componentização</h3>
+              <p>UI dividida em pedaços independentes, reutilizáveis e testáveis. Você monta interfaces como quem monta com blocos.</p>
+            </article>
+            <article class="feature">
+              <span class="feature-icon">⇄</span>
+              <h3>Fluxo previsível</h3>
+              <p>Dados descem via props, eventos sobem via callbacks. Um caminho claro reduce bugs em aplicações grandes.</p>
+            </article>
+            <article class="feature">
+              <span class="feature-icon">⚡</span>
+              <h3>Atualizações eficientes</h3>
+              <p>O React compara a árvore e aplica só o que mudou. Você escreve código simples e ainda ganha performance.</p>
+            </article>
+            <article class="feature">
+              <span class="feature-icon">◎</span>
+              <h3>Ecossistema vasto</h3>
+              <p>Roteamento, estado, dados, testes, SSR: praticamente qualquer necessidade já tem uma solução consolidada.</p>
+            </article>
+          </div>
+
+          <p>Outro ponto forte: o <strong>React DevTools</strong>. Ele permite inspecionar a árvore de componentes, ver props/state em tempo real e gravar perfis de renderização. Aprender a usá-lo cedo muda a forma como você depura.</p>
+
+          <div class="callout callout-note">
+            <span class="callout-icon">i</span>
+            <div><strong>Contexto importa.</strong> Para uma página estática simples, HTML + CSS já bastam. React brilha quando há estado, interação e muita reutilização.</div>
+          </div>
+        </section>
+
+        <!-- 03 -->
+        <section class="chapter reveal" id="jsx">
+          <div class="chapter-head">
+            <div class="chapter-meta"><span class="chapter-num">03</span><span class="chapter-level tag-start">Iniciante</span></div>
+            <h2>JSX: marcação dentro do JavaScript</h2>
+            <p class="chapter-lead">Parece HTML, mas é JavaScript. Entender essa diferença evita 90% das dúvidas iniciais.</p>
+          </div>
+
+          <p>JSX é uma extensão de sintaxe que é transformada em chamadas <code>React.createElement</code> (ou <code>jsx()</code>, nas versões recentes) por um compilador como Babel, SWC ou esbuild. Nada de mágica em runtime.</p>
+
+          <figure class="code-window">
+            <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="code-name">App.jsx</span><button class="copy-btn" type="button" aria-label="Copiar código">Copiar</button></div>
+            <pre><code><span class="tok-kw">const</span> saudacao = <span class="tok-str">'Olá'</span>;
+
+<span class="tok-kw">function</span> <span class="tok-fn">App</span>() {
+  <span class="tok-kw">return</span> (
+    <span class="tok-tag">&lt;div</span> <span class="tok-attr">className</span>=<span class="tok-str">"card"</span><span class="tok-tag">&gt;</span>
+      <span class="tok-tag">&lt;h1&gt;</span>{saudacao}, React!<span class="tok-tag">&lt;/h1&gt;</span>
+      <span class="tok-tag">&lt;p&gt;</span>{<span class="tok-num">2</span> + <span class="tok-num">2</span>} = {<span class="tok-num">4</span>}<span class="tok-tag">&lt;/p&gt;</span>
+    <span class="tok-tag">&lt;/div&gt;</span>
+  );
+}</code></pre>
+          </figure>
+
+          <div class="rules">
+            <h3>As regras que valem lembrar</h3>
+            <ul>
+              <li><strong>Expressões entre chaves:</strong> <code>{variavel}</code>, cálculos, funções — qualquer expressão JS válida.</li>
+              <li><strong><code>className</code> e <code>htmlFor</code>:</strong> porque <code>class</code> e <code>for</code> são palavras reservadas em JavaScript.</li>
+              <li><strong>camelCase nos atributos:</strong> <code>onClick</code>, <code>strokeWidth</code>, <code>tabIndex</code>.</li>
+              <li><strong>Um elemento raiz:</strong> use <code>&lt;&gt;...&lt;/&gt;</code> (Fragment) quando não quiser criar uma <code>&lt;div&gt;</code> extra.</li>
+              <li><strong>Chaves dinâmicas:</strong> <code>style={{ color: 'red' }}</code> — o primeiro par de chaves é JS, o segundo é o objeto.</li>
+            </ul>
+          </div>
+
+          <div class="callout callout-tip">
+            <span class="callout-icon">✦</span>
+            <div><strong>JSX não é obrigatório.</strong> É possível escrever <code>React.createElement(...)</code> à mão. JSX existe para tornar a estrutura visual legível — e a maioria dos projetos o usa.</div>
+          </div>
+        </section>
+
+        <!-- 04 -->
+        <section class="chapter reveal" id="componentes">
+          <div class="chapter-head">
+            <div class="chapter-meta"><span class="chapter-num">04</span><span class="chapter-level tag-start">Iniciante</span></div>
+            <h2>Componentes e props</h2>
+            <p class="chapter-lead">A unidade básica do React: uma função que recebe entradas e devolve o que deve aparecer na tela.</p>
+          </div>
+
+          <p>Um componente é uma função JavaScript que aceita <strong>props</strong> (propriedades) e retorna JSX. Props são arguments — nada mais. Vêm de fora e são <strong>somente leitura</strong>.</p>
+
+          <figure class="code-window">
+            <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="code-name">Card.jsx</span><button class="copy-btn" type="button" aria-label="Copiar código">Copiar</button></div>
+            <pre><code><span class="tok-kw">function</span> <span class="tok-fn">Badge</span>({ children, tom = <span class="tok-str">'neutro'</span> }) {
+  <span class="tok-kw">return</span> <span class="tok-tag">&lt;span</span> <span class="tok-attr">className</span>=<span class="tok-str">{`badge badge--${tom}`}</span><span class="tok-tag">&gt;</span>{children}<span class="tok-tag">&lt;/span&gt;</span>;
+}
+
+<span class="tok-kw">function</span> <span class="tok-fn">Card</span>({ titulo, descricao, acao, children }) {
+  <span class="tok-kw">return</span> (
+    <span class="tok-tag">&lt;article</span> <span class="tok-attr">className</span>=<span class="tok-str">"card"</span><span class="tok-tag">&gt;</span>
+      <span class="tok-tag">&lt;header&gt;</span>
+        <span class="tok-tag">&lt;Badge</span> <span class="tok-attr">tom</span>=<span class="tok-str">"destaque"</span><span class="tok-tag">&gt;</span>novo<span class="tok-tag">&lt;/Badge&gt;</span>
+        <span class="tok-tag">&lt;h3&gt;</span>{titulo}<span class="tok-tag">&lt;/h3&gt;</span>
+      <span class="tok-tag">&lt;/header&gt;</span>
+      <span class="tok-tag">&lt;p&gt;</span>{descricao}<span class="tok-tag">&lt;/p&gt;</span>
+      {children}
+      {acao}
+    <span class="tok-tag">&lt;/article&gt;</span>
+  );
+}</code></pre>
+          </figure>
+
+          <p>Note os detalhes: <code>children</code> permite compor conteúdo arbitrário; valores padrão (<code>tom = 'neutro'</code>) deixam a API amigável; e <code>acao</code> pode receber um botão inteiro — props transportam elementos, não só strings.</p>
+
+          <div class="callout callout-warn">
+            <span class="callout-icon">!</span>
+            <div><strong>Nunca mut props.</strong> <code>props.total = 10</code> é erro. Se precisa de algo derivado, crie uma variável local ou use estado. Componentes puros sempre retornam o mesmo resultado para as mesmas entradas.</div>
+          </div>
+
+          <p>Composição é o mecanismo favorito do React para reutilização. Em vez de criar hierarquias de herança, você encapsula partes e as encaixa. É o mesmo espírito de <code>children</code> — e ele reaparece em padrões avançados mais adiante.</p>
+        </section>
+
+        <!-- 05 -->
+        <section class="chapter reveal" id="estado">
+          <div class="chapter-head">
+            <div class="chapter-meta"><span class="chapter-num">05</span><span class="chapter-level tag-start">Iniciante</span></div>
+            <h2>Estado: quando a tela precisa mudar</h2>
+            <p class="chapter-lead">Props são entradas. Estado é a memória do componente — o que ele "lembra" entre renderizações.</p>
+          </div>
+
+          <p>O hook <code>useState</code> devolve um par: o valor atual e uma função para atualizá-lo. Ao chamar essa função, você pede ao React uma nova renderização com o novo valor.</p>
+
+          <figure class="code-window">
+            <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="code-name">Contador.jsx</span><button class="copy-btn" type="button" aria-label="Copiar código">Copiar</button></div>
+            <pre><code><span class="tok-kw">import</span> { useState } <span class="tok-kw">from</span> <span class="tok-str">'react'</span>;
+
+<span class="tok-kw">function</span> <span class="tok-fn">Contador</span>() {
+  <span class="tok-kw">const</span> [count, setCount] = useState(<span class="tok-num">0</span>);
+
+  <span class="tok-kw">function</span> <span class="tok-fn">incrementar</span>() {
+    setCount(c =&gt; c + <span class="tok-num">1</span>); <span class="tok-com">// forma funcional</span>
+  }
+
+  <span class="tok-kw">return</span> (
+    <span class="tok-tag">&lt;button</span> <span class="tok-attr">onClick</span>={incrementar}<span class="tok-tag">&gt;</span>
+      Cliques: {count}
+    <span class="tok-tag">&lt;/button&gt;</span>
+  );
+}</code></pre>
+          </figure>
+
+          <p>Três leis do estado:</p>
+          <ol class="numbered-list">
+            <li><strong>Trate-o como imutável.</strong> Para arrays e objetos, crie uma cópia: <code>setItens([...itens, novo])</code>, <code>setUser({ ...user, nome })</code>.</li>
+            <li><strong>Use a forma funcional</strong> quando o novo valor depende do anterior — evita valores obsoletos em atualizações agrupadas (<em>batching</em>).</li>
+            <li><strong>O estado é local.</strong> Se dois componentes precisam do mesmo dado, eleve o estado ao ancestral comum — ou use contexto/estado externo (capítulos 09 e 12).</li>
+          </ol>
+
+          <div class="callout callout-tip">
+            <span class="callout-icon">✦</span>
+            <div><strong>Nem tudo deve ser estado.</strong> Se um valor pode ser calculado a partir de props ou estado existente, calcule-o durante a renderização. Menos estado = menos sincronização = menos bugs.</div>
+          </div>
+        </section>
+
+        <!-- 06 -->
+        <section class="chapter reveal" id="render">
+          <div class="chapter-head">
+            <div class="chapter-meta"><span class="chapter-num">06</span><span class="chapter-level tag-mid">Intermediário</span></div>
+            <h2>Renderização: o que acontece após setState</h2>
+            <p class="chapter-lead">Aqui começa a virada. Entender o ciclo separa quem "usa React" de quem domina React.</p>
+          </div>
+
+          <p>Quando o estado muda, o React executa uma <strong>renderização</strong>: chama seus componentes novamente, obtém um novo JSX e compara com a árvore anterior. Só as diferenças são aplicadas ao DOM real (<em>commit</em>).</p>
+
+          <div class="steps">
+            <div class="step"><span class="step-n">1</span><div><strong>Trigger</strong><small>Estado ou props mudam</small></div></div>
+            <div class="step"><span class="step-n">2</span><div><strong>Render</strong><small>Componentes são chamados, JSX é calculado</small></div></div>
+            <div class="step"><span class="step-n">3</span><div><strong>Reconciliation</strong><small>Árvore nova é comparada com a anterior</small></div></div>
+            <div class="step"><span class="step-n">4</span><div><strong>Commit</strong><small>DOM é atualizado; efeitos rodam</small></div></div>
+          </div>
+
+          <p>Essa comparação é o chamado <strong>Virtual DOM</strong>. A implementação atual do React usa o <strong>Fiber</strong>, uma estrutura que permite pausar, priorizar e retomar trabalho — base para os recursos <em>concurrentes</em> que veremos mais adiante.</p>
+
+          <h3>Por que <code>key</code> importa tanto</h3>
+          <p>Ao renderizar listas, a <code>key</code> diz ao React qual item é qual. Sem ela (ou usando o índice), uma reordenação pode preservar estado do item errado — campo de texto com valor trocado é o sintoma clássico.</p>
+
+          <div class="compare">
+            <div class="compare-box">
+              <span class="compare-label bad">Frágil</span>
+              <pre><code>{itens.map((item, i) =&gt; (
+  <span class="tok-tag">&lt;Item</span> <span class="tok-attr">key</span>={i} <span class="tok-attr">item</span>={item} <span class="tok-tag">/&gt;</span>
+))}</code></pre>
+              <p>O índice muda quando a lista é reordenada.</p>
+            </div>
+            <div class="compare-box">
+              <span class="compare-label good">Estável</span>
+              <pre><code>{itens.map((item) =&gt; (
+  <span class="tok-tag">&lt;Item</span> <span class="tok-attr">key</span>={item.id} <span class="tok-attr">item</span>={item} <span class="tok-tag">/&gt;</span>
+))}</code></pre>
+              <p>IDs estáveis identificam cada elemento de verdade.</p>
+            </div>
+          </div>
+
+          <div class="callout callout-note">
+            <span class="callout-icon">i</span>
+            <div><strong>"Renderizar" não é "atualizar o DOM".</strong> Um componente pode renderizar e não gerar nenhuma mudança visível. Renderizações extras são normais, baratas e, na maioria dos casos, não precisam ser otimizadas.</div>
+          </div>
+        </section>
+
+        <!-- 07 -->
+        <section class="chapter reveal" id="efeitos">
+          <div class="chapter-head">
+            <div class="chapter-meta"><span class="chapter-num">07</span><span class="chapter-level tag-mid">Intermediário</span></div>
+            <h2>Efeitos: sincronizando com o mundo externo</h2>
+            <p class="chapter-lead"><code>useEffect</code> é uma saída de emergência do React puro — para tudo que vive fora da renderização.</p>
+          </div>
+
+          <p>Renderização deve ser pura. Buscar dados, assinar eventos, iniciar timers ou manipular o DOM diretamente são <em>efeitos colaterais</em> — e o lugar para eles é <code>useEffect</code>.</p>
+
+          <figure class="code-window">
+            <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="code-name">useUser.js</span><button class="copy-btn" type="button" aria-label="Copiar código">Copiar</button></div>
+            <pre><code>useEffect(() =&gt; {
+  <span class="tok-kw">const</span> controller = <span class="tok-kw">new</span> AbortController();
+
+  fetch(<span class="tok-str">`/api/users/${id}`</span>, { <span class="tok-attr">signal</span>: controller.signal })
+    .then(r =&gt; r.json())
+    .then(setUser)
+    .catch(e =&gt; { <span class="tok-kw">if</span> (e.name !== <span class="tok-str">'AbortError'</span>) setErro(e); });
+
+  <span class="tok-kw">return</span> () =&gt; controller.abort(); <span class="tok-com">// cleanup</span>
+}, [id]); <span class="tok-com">// dependências</span></code></pre>
+          </figure>
+
+          <h3>O array de dependências</h3>
+          <ul>
+            <li><code>[]</code> → executa uma vez na montagem (e limpa na desmontagem).</li>
+            <li><code>[id]</code> → executa na montagem e sempre que <code>id</code> mudar.</li>
+            <li><strong>Sem array</strong> → executa após toda renderização. Use com parcimônia.</li>
+          </ul>
+          <p>A função de limpeza (<code>return () =&gt; ...</code>) evita vazamentos: cancela requisições, remove listeners, limpa timers. Em modo de desenvolvimento com <strong>StrictMode</strong>, o React monta → desmonta → monta de propósito para revelar efeitos sem cleanup.</p>
+
+          <div class="callout callout-warn">
+            <span class="callout-icon">!</span>
+            <div><strong>Nem todo cálculo precisa de efeito.</strong> Filtrar uma lista ou derivar um valor deve acontecer durante a renderização. Use efeito apenas para sincronizar com algo <em>externo</em> ao React. As regras do <code>useEffect</code> são um dos temas mais importantes do guia oficial — vale ler.</div>
+          </div>
+        </section>
+
+        <!-- 08 -->
+        <section class="chapter reveal" id="hooks">
+          <div class="chapter-head">
+            <div class="chapter-meta"><span class="chapter-num">08</span><span class="chapter-level tag-mid">Intermediário</span></div>
+            <h2>Hooks: reutilizando lógica com estado</h2>
+            <p class="chapter-lead">Hooks são funções que "ligam" um componente aos recursos do React. Eles possibilitam extrair lógica repetida para fora da UI.</p>
+          </div>
+
+          <p>As duas regras sagradas: <strong>chame hooks apenas no nível superior</strong> (não dentro de condições, loops ou funções aninhadas) e <strong>apenas em componentes ou outros hooks</strong>. O React conta a ordem das chamadas para associar cada estado à sua posição — quebrar a ordem quebra tudo.</p>
+
+          <div class="hook-table-wrap">
+            <table class="hook-table">
+              <thead><tr><th>Hook</th><th>Para que serve</th><th>Gatilho típico</th></tr></thead>
+              <tbody>
+                <tr><td><code>useState</code></td><td>Estado local simples</td><td>Contador, toggle, input</td></tr>
+                <tr><td><code>useReducer</code></td><td>Estado com transições complexas</td><td>Múltiplas ações relacionadas</td></tr>
+                <tr><td><code>useEffect</code></td><td>Sincronizar com sistemas externos</td><td>API, timer, listener</td></tr>
+                <tr><td><code>useLayoutEffect</code></td><td>Efeito antes da pintura</td><td>Medir elemento, evitar flicker</td></tr>
+                <tr><td><code>useMemo</code></td><td>Memoizar valor caro</td><td>Cálculo pesado, referência estável</td></tr>
+                <tr><td><code>useCallback</code></td><td>Memoizar função</td><td>Callback passado a filho memoizado</td></tr>
+                <tr><td><code>useRef</code></td><td>Referência mutável que não renderiza</td><td>Acessar DOM, guardar timer</td></tr>
+                <tr><td><code>useContext</code></td><td>Ler contexto</td><td>Tema, usuário, locale</td></tr>
+                <tr><td><code>useId</code></td><td>ID estável para acessibilidade</td><td>Rótulos de formulário</td></tr>
+                <tr><td><code>useTransition</code> / <code>useDeferredValue</code></td><td>Marcar atualização como não urgente</td><td>Busca enquanto digita</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Hooks customizados</h3>
+          <p>Quando uma lógica com estado se repete, extraia-a. O nome começa com <code>use</code> e o resultado é uma API limpa, desacoplada da interface.</p>
+
+          <figure class="code-window">
+            <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="code-name">useLocalStorage.js</span><button class="copy-btn" type="button" aria-label="Copiar código">Copiar</button></div>
+            <pre><code><span class="tok-kw">function</span> <span class="tok-fn">useLocalStorage</span>(chave, inicial) {
+  <span class="tok-kw">const</span> [valor, setValor] = useState(() =&gt; {
+    <span class="tok-kw">try</span> { <span class="tok-kw">return</span> JSON.parse(localStorage.getItem(chave)) ?? inicial; }
+    <span class="tok-kw">catch</span> { <span class="tok-kw">return</span> inicial; }
+  });
+
+  useEffect(() =&gt; {
+    localStorage.setItem(chave, JSON.stringify(valor));
+  }, [chave, valor]);
+
+  <span class="tok-kw">return</span> [valor, setValor];
+}</code></pre>
+          </figure>
+
+          <div class="callout callout-tip">
+            <span class="callout-icon">✦</span>
+            <div><strong>Use um linter.</strong> <code>eslint-plugin-react-hooks</code> detecta violações das regras automaticamente — inclusive dependências faltando em efeitos. É o melhor investimento de 5 minutos nesse tema.</div>
+          </div>
+        </section>
+
+        <!-- 09 -->
+        <section class="chapter reveal" id="contexto">
+          <div class="chapter-head">
+            <div class="chapter-meta"><span class="chapter-num">09</span><span class="chapter-level tag-mid">Intermediário</span></div>
+            <h2>Contexto: dados sem "prop drilling"</h2>
+            <p class="chapter-lead">Quando vários componentes distantes precisam do mesmo valor, passar props de mão em mão fica insuportável.</p>
+          </div>
+
+          <p><em>Prop drilling</em> é o ato de atravessar props por componentes que não as usam só para chegar a um neto. O Context API resolve isso com um "<em>canal</em>" de dados: um Provider no topo e consumidores onde precisar.</p>
+
+          <figure class="code-window">
+            <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="code-name">TemaContext.jsx</span><button class="copy-btn" type="button" aria-label="Copiar código">Copiar</button></div>
+            <pre><code><span class="tok-kw">const</span> TemaContext = createContext(<span class="tok-str">'claro'</span>);
+
+<span class="tok-kw">function</span> <span class="tok-fn">App</span>() {
+  <span class="tok-kw">const</span> [tema, setTema] = useState(<span class="tok-str">'claro'</span>);
+  <span class="tok-kw">return</span> (
+    <span class="tok-tag">&lt;TemaContext.Provider</span> <span class="tok-attr">value</span>={{ tema, setTema }}<span class="tok-tag">&gt;</span>
+      <span class="tok-tag">&lt;Layout /&gt;</span>
+    <span class="tok-tag">&lt;/TemaContext.Provider&gt;</span>
+  );
+}
+
+<span class="tok-kw">function</span> <span class="tok-fn">BotaoTema</span>() {
+  <span class="tok-kw">const</span> { tema, setTema } = useContext(TemaContext);
+  <span class="tok-kw">return</span> <span class="tok-tag">&lt;button</span> <span class="tok-attr">onClick</span>={() =&gt; setTema(tema === <span class="tok-str">'claro'</span> ? <span class="tok-str">'escuro'</span> : <span class="tok-str">'claro'</span>)}<span class="tok-tag">&gt;</span>Alternar<span class="tok-tag">&lt;/button&gt;</span>;
+}</code></pre>
+          </figure>
+
+          <p>Atenção: todo consumidor re-renderiza quando o <code>value</code> do Provider muda. Por isso, evite objetos grandes e instáveis — memoize o valor (<code>useMemo</code>) e separe contextos por domínio (tema, sessão, idioma) em vez de criar um "contexto Deus".</p>
+
+          <div class="callout callout-note">
+            <span class="callout-icon">i</span>
+            <div><strong>Contexto ≠ gerenciador de estado.</strong> Ele é um mecanismo de distribuição. Para estado complexo e de alta frequência, bibliotecas como Zustand, Jotai ou Redux oferecem seletores que evitam re-renderizações em cascata.</div>
+          </div>
+        </section>
+
+        <!-- 10 -->
+        <section class="chapter reveal" id="formularios">
+          <div class="chapter-head">
+            <div class="chapter-meta"><span class="chapter-num">10</span><span class="chapter-level tag-mid">Intermediário</span></div>
+            <h2>Formulários: controlados ou não?</h2>
+            <p class="chapter-lead">A forma mais comum de interação — e um dos lugares onde o modelo mental do React mais difere do HTML puro.</p>
+          </div>
+
+          <p>Em um <strong>input controlado</strong>, o valor vem do estado e o <code>onChange</code> o atualiza. O React é a fonte da verdade. Em um <strong>não controlado</strong>, o DOM guarda o valor e você o lê quando precisar (via <code>ref</code> ou <code>FormData</code>).</p>
+
+          <figure class="code-window">
+            <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="code-name">LoginForm.jsx</span><button class="copy-btn" type="button" aria-label="Copiar código">Copiar</button></div>
+            <pre><code><span class="tok-kw">function</span> <span class="tok-fn">LoginForm</span>() {
+  <span class="tok-kw">const</span> [email, setEmail] = useState(<span class="tok-str">''</span>);
+
+  <span class="tok-kw">function</span> <span class="tok-fn">enviar</span>(e) {
+    e.preventDefault();
+    <span class="tok-kw">const</span> dados = <span class="tok-kw">new</span> FormData(e.currentTarget);
+    console.log(Object.fromEntries(dados));
+  }
+
+  <span class="tok-kw">return</span> (
+    <span class="tok-tag">&lt;form</span> <span class="tok-attr">onSubmit</span>={enviar}<span class="tok-tag">&gt;</span>
+      <span class="tok-tag">&lt;label</span> <span class="tok-attr">htmlFor</span>=<span class="tok-str">"email"</span><span class="tok-tag">&gt;</span>E-mail<span class="tok-tag">&lt;/label&gt;</span>
+      <span class="tok-tag">&lt;input</span> <span class="tok-attr">id</span>=<span class="tok-str">"email"</span> <span class="tok-attr">name</span>=<span class="tok-str">"email"</span>
+        <span class="tok-attr">value</span>={email} <span class="tok-attr">onChange</span>={e =&gt; setEmail(e.target.value)} <span class="tok-tag">/&gt;</span>
+      <span class="tok-tag">&lt;button&gt;</span>Entrar<span class="tok-tag">&lt;/button&gt;</span>
+    <span class="tok-tag">&lt;/form&gt;</span>
+  );
+}</code></pre>
+          </figure>
+
+          <p>Formulários controlados são ótimos para validação em tempo real e dependências entre campos. Já em formulários grandes, digitar caractere por caractere provoca uma renderização por tecla — nesses casos, bibliotecas como <strong>React Hook Form</strong> (que usam refs e assinaturas) costumam ser melhores que manter 30 <code>useState</code>.</p>
+
+          <div class="callout callout-tip">
+            <span class="callout-icon">✦</span>
+            <div><strong>Acessibilidade é parte do formulário.</strong> Sempre associe <code>&lt;label&gt;</code> ao input via <code>htmlFor</code>/<code>id</code>, use <code>aria-describedby</code> para mensagens de erro e <code>aria-invalid</code> para campos inválidos.</div>
+          </div>
+        </section>
+
+        <!-- 11 -->
+        <section class="chapter reveal" id="performance">
+          <div class="chapter-head">
+            <div class="chapter-meta"><span class="chapter-num">11</span><span class="chapter-level tag-adv">Avançado</span></div>
+            <h2>Performance sem adivinhação</h2>
+            <p class="chapter-lead">Memoizar tudo é uma forma cara de não resolver nada. Meça primeiro, otimize depois.</p>
+          </div>
+
+          <p>Comece pelo <strong>React Profiler</strong> (DevTools → Profiler) e pelo <code>React.Profiler</code> em produção. Eles mostram quais componentes renderizaram, quanto tempo levaram e por quê. Com dados em mãos, escolha a ferramenta certa:</p>
+
+          <div class="perf-grid">
+            <article class="perf-item">
+              <span class="perf-num">01</span>
+              <h3><code>React.memo</code></h3>
+              <p>Evita re-renderizar um componente se as props não mudaram. Útil em filhos "caros" com props estáveis.</p>
+            </article>
+            <article class="perf-item">
+              <span class="perf-num">02</span>
+              <h3><code>useMemo</code> / <code>useCallback</code></h3>
+              <p>Estabilizam referências para que <code>memo</code> funcione e evitam recomputar valores pesados.</p>
+            </article>
+            <article class="perf-item">
+              <span class="perf-num">03</span>
+              <h3><code>lazy</code> + <code>Suspense</code></h3>
+              <p>Divide o bundle: carrega rotas e recursos pesados só quando necessário.</p>
+            </article>
+            <article class="perf-item">
+              <span class="perf-num">04</span>
+              <h3>Virtualização</h3>
+              <p>Para listas com milhares de itens, renderize apenas o que está visível (<code>react-window</code>, TanStack Virtual).</p>
+            </article>
+          </div>
+
+          <figure class="code-window">
+            <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="code-name">App.jsx</span><button class="copy-btn" type="button" aria-label="Copiar código">Copiar</button></div>
+            <pre><code><span class="tok-kw">import</span> { lazy, Suspense } <span class="tok-kw">from</span> <span class="tok-str">'react'</span>;
+
+<span class="tok-kw">const</span> Dashboard = lazy(() =&gt; <span class="tok-kw">import</span>(<span class="tok-str">'./Dashboard'</span>));
+
+<span class="tok-kw">function</span> <span class="tok-fn">App</span>() {
+  <span class="tok-kw">return</span> (
+    <span class="tok-tag">&lt;Suspense</span> <span class="tok-attr">fallback</span>={<span class="tok-tag">&lt;Spinner</span> <span class="tok-tag">/&gt;</span>}<span class="tok-tag">&gt;</span>
+      <span class="tok-tag">&lt;Dashboard</span> <span class="tok-tag">/&gt;</span>
+    <span class="tok-tag">&lt;/Suspense&gt;</span>
+  );
+}</code></pre>
+          </figure>
+
+          <div class="callout callout-warn">
+            <span class="callout-icon">!</span>
+            <div><strong>Memoização tem custo.</strong> Cada <code>useMemo</code>/<code>useCallback</code> adiciona comparação e complexidade mental. Use quando há evidência de problema — não por reflexo. Regras mais baratas: stable keys, evitar objetos inline em props e manter componentes pequenos.</div>
+          </div>
+        </section>
+
+        <!-- 12 -->
+        <section class="chapter reveal" id="avancado">
+          <div class="chapter-head">
+            <div class="chapter-meta"><span class="chapter-num">12</span><span class="chapter-level tag-adv">Avançado</span></div>
+            <h2>Padrões e arquitetura</h2>
+            <p class="chapter-lead">Aqui o React deixa de ser "componentes" e passa a ser design de software.</p>
+          </div>
+
+          <h3>Compound Components</h3>
+          <p>Componentes que colaboram entre si e compartilham estado implícito via contexto. A API resultante é flexível e lê como HTML semântico.</p>
+
+          <figure class="code-window">
+            <div class="code-bar"><span class="dots"><i></i><i></i><i></i></span><span class="code-name">Tabs.jsx</span><button class="copy-btn" type="button" aria-label="Copiar código">Copiar</button></div>
+            <pre><code><span class="tok-tag">&lt;Tabs</span> <span class="tok-attr">padrao</span>=<span class="tok-str">"info"</span><span class="tok-tag">&gt;</span>
+  <span class="tok-tag">&lt;Tabs.List&gt;</span>
+    <span class="tok-tag">&lt;Tabs.Tab</span> <span class="tok-attr">value</span>=<span class="tok-str">"info"</span><span class="tok-tag">&gt;</span>Info<span class="tok-tag">&lt;/Tabs.Tab&gt;</span>
+    <span class="tok-tag">&lt;Tabs.Tab</span> <span class="tok-attr">value</span>=<span class="tok-str">"logs"</span><span class="tok-tag">&gt;</span>Logs<span class="tok-tag">&lt;/Tabs.Tab&gt;</span>
+  <span class="tok-tag">&lt;/Tabs.List&gt;</span>
+  <span class="tok-tag">&lt;Tabs.Panel</span> <span class="tok-attr">value</span>=<span class="tok-str">"info"</span><span class="tok-tag">&gt;</span>Conteúdo...<span class="tok-tag">&lt;/Tabs.Panel&gt;</span>
+<span class="tok-tag">&lt;/Tabs&gt;</span></code></pre>
+          </figure>
+
+          <h3>Outros padrões do dia a dia</h3>
+          <div class="pattern-list">
+            <div><strong>Render props</strong><span>Passa uma função como prop para delegar o que renderizar. Base de bibliotecas como Downshift.</span></div>
+            <div><strong>Container / Presentational</strong><span>Separa "onde vem o dado" de "como aparece". Hoje é bastante substituído por hooks customizados, mas a ideia permanece.</span></div>
+            <div><strong>Portals</strong><span><code>createPortal</code> renderiza fora da árvore DOM — modais, tooltips e popovers sem problemas de z-index.</span></div>
+            <div><strong>Error Boundaries</strong><span>Componentes de classe com <code>getDerivedStateFromError</code> que capturam erros de filhos e mostram um fallback.</span></div>
+            <div><strong>Estados externos</strong><span>Zustand/Redux para estado global; TanStack Query para dados de servidor (cache, revalidação, otimismo).</span></div>
+          </div>
+
+          <h3>O que mudou nas versões recentes</h3>
+          <p>React 18 trouxe <strong>Concurrent Rendering</strong>, <code>useTransition</code>, <code>useDeferredValue</code> e Streaming SSR. React 19 consolidou <strong>Actions</strong>, <code>useActionState</code>, <code>use()</code>, <code>&lt;form action&gt;</code> e metadados embutidos. O <strong>React Compiler</strong> automatiza memoizações que antes você fazia à mão.</p>
+
+          <div class="callout callout-note">
+            <span class="callout-icon">i</span>
+            <div><strong>Server Components</strong> (Next.js App Router, Remix) executam componentes no servidor e enviam menos JavaScript ao cliente. É um modelo mental novo: nem todo componente precisa "viver" no browser.</div>
+          </div>
+        </section>
+
+        <!-- 13 -->
+        <section class="chapter reveal" id="comecar">
+          <div class="chapter-head">
+            <div class="chapter-meta"><span class="chapter-num">13</span><span class="chapter-level tag-adv">Avançado</span></div>
+            <h2>Próximos passos</h2>
+            <p class="chapter-lead">Você já tem o mapa. Agora é construir — e usar as ferramentas certas para não travar.</p>
+          </div>
+
+          <div class="checklist">
+            <h3>Checklist mental antes de finalizar</h3>
+            <ul>
+              <li><span class="check">✓</span> Componentes pequenos, com responsabilidade clara e nomes descritivos.</li>
+              <li><span class="check">✓</span> <code>key</code> estável em listas; nada de índice em listas mutáveis.</li>
+              <li><span class="check">✓</span> Efeitos com cleanup e dependências corretas.</li>
+              <li><span class="check">✓</span> Tipagem com <strong>TypeScript</strong> para props e estado.</li>
+              <li><span class="check">✓</span> Testes com <strong>Vitest + Testing Library</strong> focados em comportamento.</li>
+              <li><span class="check">✓</span> Acessibilidade: labels, foco, contraste, navegação por teclado.</li>
+              <li><span class="check">✓</span> Mediu antes de otimizar; documentou decisões não óbvias.</li>
+            </ul>
+          </div>
+
+          <h3>Um roteiro de estudos enxuto</h3>
+          <div class="steps steps-roadmap">
+            <div class="step"><span class="step-n">1</span><div><strong>Pratique</strong><small>Recrie uma UI real: todo, filtro, modal, formulário</small></div></div>
+            <div class="step"><span class="step-n">2</span><div><strong>Use Vite + TS</strong><small>Setup rápido com HMR e tipagem desde o início</small></div></div>
+            <div class="step"><span class="step-n">3</span><div><strong>Escolha um framework</strong><small>Next.js ou Remix para SSR, rotas e dados</small></div></div>
+            <div class="step"><span class="step-n">4</span><div><strong>Leia a doc oficial</strong><small>react.dev — o novo guia é excelente e interativo</small></div></div>
+          </div>
+
+          <div class="final-cta">
+            <div>
+              <span class="eyebrow">É isso</span>
+              <h3>Agora é a sua vez.</h3>
+              <p>A teoria só vira habilidade quando você escreve código. Abra um editor, crie seu primeiro componente e volte aqui quando tiver dúvidas.</p>
+            </div>
+            <a class="btn btn-primary" href="https://react.dev/learn" target="_blank" rel="noopener">Abrir a documentação <span aria-hidden="true">↗</span></a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- ============ PROJETOS ============ -->
+    <section class="section projects" id="projetos">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="eyebrow">Mão na massa</span>
+          <h2>5 projetos, uma trilha completa</h2>
+          <p>Cada projeto coloca em prática os capítulos anteriores — e introduz o próximo. Faça na ordem, ou escolha o que mais desperta curiosidade.</p>
+        </header>
+
+        <div class="project-list">
+          <!-- Projeto 01 -->
+          <article class="project-card reveal" style="--accent:#61dafb; --delay:.03s">
+            <div class="project-index">
+              <span>01</span>
+              <small>Iniciante</small>
+            </div>
+            <div class="project-body">
+              <div class="project-title-row">
+                <h3>Contador de Hábitos</h3>
+                <span class="project-time">~1h</span>
+              </div>
+              <p class="project-desc">Uma interface enxuta para acompanhar pequenos hábitos diários. O "olá, mundo" que já ensina a pensar em componentes.</p>
+              <div class="project-tags"><span>Componentes</span><span>Props</span><span>useState</span><span>Keys</span></div>
+              <div class="project-grid">
+                <div class="project-block">
+                  <h4>O que construir</h4>
+                  <ul>
+                    <li>Componente <code>Habito</code> que recebe nome e contador por props.</li>
+                    <li>Botão <code>+1</code> que atualiza o estado no componente pai.</li>
+                    <li>Lista com <code>key</code> estável e mensagem para lista vazia.</li>
+                    <li>Botão "Reiniciar dia" que zera todos os contadores.</li>
+                  </ul>
+                </div>
+                <div class="project-block challenge">
+                  <h4>Desafio extra</h4>
+                  <p>Persista os contadores no <code>localStorage</code> criando um hook <code>usePersistentState</code>. Aqui você já usa o capítulo 08.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projeto 02 -->
+          <article class="project-card reveal" style="--accent:#4ade80; --delay:.08s">
+            <div class="project-index">
+              <span>02</span>
+              <small>Iniciante → Intermediário</small>
+            </div>
+            <div class="project-body">
+              <div class="project-title-row">
+                <h3>Lista de Tarefas com Filtros</h3>
+                <span class="project-time">~2h</span>
+              </div>
+              <p class="project-desc">O clássico todo list, mas com filtros, contadores derivados e histórico. Ótimo para treinar imutabilidade de estado.</p>
+              <div class="project-tags"><span>Formulários</span><span>Estado derivado</span><span>Imutabilidade</span><span>useReducer</span></div>
+              <div class="project-grid">
+                <div class="project-block">
+                  <h4>O que construir</h4>
+                  <ul>
+                    <li>Input controlado com <code>onChange</code> para adicionar tarefas.</li>
+                    <li>Filtros Todos / Ativos / Concluídos calculados na renderização.</li>
+                    <li>Marcar e remover itens sem mutar o array original.</li>
+                    <li>Contador de pendentes derivado — sem criar um segundo estado.</li>
+                  </ul>
+                </div>
+                <div class="project-block challenge">
+                  <h4>Desafio extra</h4>
+                  <p>Implemente "Desfazer" com <code>useReducer</code> guardando um histórico de estados. Teste a diferença entre estado e valor derivado.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projeto 03 -->
+          <article class="project-card reveal" style="--accent:#a78bfa; --delay:.13s">
+            <div class="project-index">
+              <span>03</span>
+              <small>Intermediário</small>
+            </div>
+            <div class="project-body">
+              <div class="project-title-row">
+                <h3>Buscador de Repositórios</h3>
+                <span class="project-time">~3h</span>
+              </div>
+              <p class="project-desc">Uma busca em tempo real na API do GitHub. Aqui o React precisa conversar com o mundo — e lidar com latência e erro.</p>
+              <div class="project-tags"><span>useEffect</span><span>AbortController</span><span>useMemo</span><span>useDeferredValue</span></div>
+              <div class="project-grid">
+                <div class="project-block">
+                  <h4>O que construir</h4>
+                  <ul>
+                    <li>Busca com debounce e estados de carregamento, vazio e erro.</li>
+                    <li>Cancelamento da requisição anterior no cleanup do efeito.</li>
+                    <li>Ordenação dos resultados memorizada com <code>useMemo</code>.</li>
+                    <li>Interface acessível: <code>aria-live</code> para os resultados.</li>
+                  </ul>
+                </div>
+                <div class="project-block challenge">
+                  <h4>Desafio extra</h4>
+                  <p>Troque o debounce manual por <code>useDeferredValue</code> e compare a sensação de uso. Depois meça com o Profiler.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projeto 04 -->
+          <article class="project-card reveal" style="--accent:#fbbf24; --delay:.18s">
+            <div class="project-index">
+              <span>04</span>
+              <small>Intermediário → Avançado</small>
+            </div>
+            <div class="project-body">
+              <div class="project-title-row">
+                <h3>Loja com Carrinho e Tema</h3>
+                <span class="project-time">~4h</span>
+              </div>
+              <p class="project-desc">Um catálogo com carrinho persistente e tema claro/escuro. Estado compartilhado sem transformar tudo em um contexto único.</p>
+              <div class="project-tags"><span>Context API</span><span>useReducer</span><span>Composição</span><span>Portals</span><span>memo</span></div>
+              <div class="project-grid">
+                <div class="project-block">
+                  <h4>O que construir</h4>
+                  <ul>
+                    <li>Contextos separados para <code>Tema</code> e <code>Carrinho</code>.</li>
+                    <li>Reducer para adicionar, remover e alterar quantidades.</li>
+                    <li>Modal do carrinho renderizado com <code>createPortal</code>.</li>
+                    <li>Lista de produtos memoizada com callbacks estáveis.</li>
+                  </ul>
+                </div>
+                <div class="project-block challenge">
+                  <h4>Desafio extra</h4>
+                  <p>Use o React Profiler e justifique cada <code>memo</code>/<code>useCallback</code>. Remova os que não fizeram diferença.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Projeto 05 -->
+          <article class="project-card reveal" style="--accent:#fb7185; --delay:.23s">
+            <div class="project-index">
+              <span>05</span>
+              <small>Avançado</small>
+            </div>
+            <div class="project-body">
+              <div class="project-title-row">
+                <h3>Dashboard de Dados</h3>
+                <span class="project-time">~6h</span>
+              </div>
+              <p class="project-desc">O projeto que recombina tudo: rotas, dados remotos, formulários validados, listas gigantes e resiliência.</p>
+              <div class="project-tags"><span>lazy + Suspense</span><span>Error Boundary</span><span>TanStack Query</span><span>RHF</span><span>Virtualização</span></div>
+              <div class="project-grid">
+                <div class="project-block">
+                  <h4>O que construir</h4>
+                  <ul>
+                    <li>Rotas com code splitting via <code>lazy</code> e <code>Suspense</code>.</li>
+                    <li>Dados de servidor com cache e revalidação (TanStack Query).</li>
+                    <li>Formulário validado com feedback acessível (React Hook Form).</li>
+                    <li>Tabela virtualizada com milhares de linhas e Error Boundary por rota.</li>
+                  </ul>
+                </div>
+                <div class="project-block challenge">
+                  <h4>Desafio extra</h4>
+                  <p>Migre para Next.js (App Router + Server Components) e escreva testes de comportamento com Vitest + Testing Library.</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="projects-footer reveal">
+          <div>
+            <span class="eyebrow">Como usar esta lista</span>
+            <h3>Escolha um. Construa. Repita.</h3>
+            <p>Não precisa acertar de primeira. Cada projeto rende mais quando você o refatora depois de aprender o capítulo seguinte — o código que você melhora ensina mais do que o código que você escreve uma vez.</p>
+          </div>
+          <a class="btn btn-ghost" href="#conceito">Revisar a trilha <span aria-hidden="true">↑</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ RODAPÉ ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-atom" aria-hidden="true"><i></i><i></i><i></i><b></b></span>
+        <div><strong>react.guide</strong><small>Um guia feito para quem quer entender de verdade.</small></div>
+      </div>
+      <div class="footer-links">
+        <a href="#inicio">Início</a>
+        <a href="#trilha">Trilha</a>
+        <a href="#projetos">Projetos</a>
+        <a href="https://react.dev" target="_blank" rel="noopener">Documentação</a>
+      </div>
+      <p class="footer-note">Conteúdo educacional · Feito com HTML, CSS e muita curiosidade.</p>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Voltar ao topo">↑</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
